@@ -1,4 +1,5 @@
 import React, { Component } from 'react' 
+// import Caps from './Caps'
 class FormList extends React.Component {
     constructor(props) {
       super(props);
@@ -11,22 +12,26 @@ class FormList extends React.Component {
       };
     
      this.handleSubmit = this.handleSubmit.bind(this);
+    
+     this.handleRecord = this.handleRecord.bind(this);
+    
     }
-    //  // this.handleRecord = this.handleRecord.bind(this);
-    // }
-  
     handleSubmit(event) {
-    //   event.preventDefault();
+      event.preventDefault();
       const data = new FormData(event.target);
-
+      fetch('/api/form-submit-url', 
+      {
+        method: 'POST',
+        body: data,
+      });
     }
     handleRecord = (event)=> {
-        alert("Name:" + this.state.name  +  "-Age" + this.state.age + "-Gender:" + this.state.gender + "-Occupation:" + this.state.occupation);
+        alert("Name:" + this.state.name+'\n'+ "Age:" + this.state.age +'\n'+ "Gender:" + this.state.gender +'\n'+ "Occupation:" + this.state.occupation);
         event.preventDefault();
       }
     
       handleNameChange= (event) => {
-        this.setState({name: event.target.value});
+       this.setState({name: event.target.value});
       }
       handleAgeChange= (event) => {
         this.setState({age: event.target.value});
@@ -40,11 +45,12 @@ class FormList extends React.Component {
     
     render() {
       return (
-        <form handleSubmit ={this.handleSubmit}>
+        <form onSubmit ={this.handleSubmit}>
             <h1>PLEASE FILL UP THE FORM</h1>
             <label>
             Name:
-             <input type="text" value={this.state.name} onChange={this.handleNameChange} /><br/>
+            
+             <input type="text" value={this.state.name} onChange = {this.handleNameChange} /><br/>
              
             Age:
              <input type="text" value={this.state.age} onChange={this.handleAgeChange} type = "number"/><br/>
@@ -55,9 +61,9 @@ class FormList extends React.Component {
             Occupation:
              <input type="text" value={this.state.occupation} onChange={this.handleOccupationChange} /><br/>
   
-  </label>
-  <button>Submit</button> <br/>
- <button type = "record" value = "record" onClick = {this.handleRecord}> Show Record </button>
+            </label>
+          <button type  ="submit">Submit</button> <br/>
+          <button type = "record" value = "record" onClick = {this.handleRecord}> Show Record </button>
           
         </form>
       );
