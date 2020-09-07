@@ -25,8 +25,9 @@ class FormList extends React.Component {
         body: data,
       });
     }
+  
     handleRecord = (event)=> {
-        alert("Name:" + this.state.name+'\n'+ "Age:" + this.state.age +'\n'+ "Gender:" + this.state.gender +'\n'+ "Occupation:" + this.state.occupation);
+        alert("Name:" + this.state.name.charAt(0).toUpperCase()+this.state.name.slice(1)+'\n'+ "Age:" + this.state.age +'\n'+ "Gender:" + this.state.gender +'\n'+ "Occupation:" + this.state.occupation);
         event.preventDefault();
       }
     

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FormList from './Form'
+// import FormList from './Form'
 class Caps extends React.Component {
   constructor(props) {
     super(props);
@@ -7,7 +7,8 @@ class Caps extends React.Component {
   render() {
     return (
   
-      <FormList>{(this.handleNameChange.charAt(0).toUpperCase().slice(1))}</FormList>
+      this.state.name =  this.props.name.charAt(0).toUpperCase()+this.props.name.slice(1)
+   
     );
   }
 }
